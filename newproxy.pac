@@ -1,5 +1,8 @@
 function FindProxyForURL(url, host) {
-	if isInNet(dnsResolve(host), "10.0.0.0", "255.0.0.0") {
+	if (shExpMatch(host, "proxyerror.sdm.network")) {
+		return "DIRECT";
+	}
+	if (shExpMatch(host, "www.*")) {
 		return "SOCKS 10.6.6.1:1080";
 	}
 	return "DIRECT";
